@@ -70,6 +70,18 @@ body{
     cursor:pointer;
     position:relative;
 }
+
+.weekdays{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+
+    margin-top:20px;
+    text-align:center;
+
+    opacity:0.7;
+    font-size:14px;
+}
+
     
     /* 今日 */
 .today{
@@ -149,6 +161,18 @@ body{
 <h2 id="monthTitle"></h2>
 
 <button id="nextBtn">></button>
+
+</div>
+
+<div class="weekdays">
+
+<div>Sun</div>
+<div>Mon</div>
+<div>Tue</div>
+<div>Wed</div>
+<div>Thu</div>
+<div>Fri</div>
+<div>Sat</div>
 
 </div>
 
@@ -232,7 +256,6 @@ const monthNames = [
 
 
 const daysContainer = document.getElementById("days");
-
 function renderCalendar(){
 
     /* タイトル変更 */
@@ -243,6 +266,25 @@ function renderCalendar(){
     /* リセット */
 
     daysContainer.innerHTML = "";
+
+    /* 月初の曜日 */
+
+const firstDay = new Date(
+    today.getFullYear(),
+    currentMonth,
+    1
+).getDay();
+
+/* 空白追加 */
+
+for(let i=0; i<firstDay; i++){
+
+    const empty = document.createElement("div");
+
+    daysContainer.appendChild(empty);
+
+}
+
 
     /* 月の日数 */
 
