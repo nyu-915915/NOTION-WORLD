@@ -50,6 +50,17 @@ body{
     cursor:pointer;
     position:relative;
 }
+    
+    /* 今日 */
+.today{
+    background:#ff6ba6;
+    color:white;
+    box-shadow:
+        0 0 10px #ff6ba6,
+        0 0 20px #ff6ba6;
+}
+
+
 
 /* TODOある日 */
 
@@ -167,18 +178,62 @@ const todos = {
     6:["面接準備","スーツ確認"],
     15:["ネイル予約"]
 };
+/* 今日の日付取得 */
+
+const today = new Date();
+const currentMonth = today.getMonth();
+const currentDate = today.getDate();
+
+/* 月の名前 */
+const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+
+/* タイトル変更 */
+
+document.querySelector("h2").textContent =
+    monthNames[currentMonth];
+
 
 /* カレンダー生成 */
 
 const daysContainer = document.getElementById("days");
 
-for(let i=1; i<=31; i++){
+/* その月の日数 */
+
+const lastDay = new Date(
+    today.getFullYear(),
+    currentMonth + 1,
+    0
+).getDate();
+
+/* 日付生成 */
+
+for(let i=1; i<=lastDay; i++){
+
 
     const day = document.createElement("div");
 
     day.classList.add("day");
 
     day.textContent = i;
+    
+    /* 今日 */
+if(i === currentDate){
+    day.classList.add("today");
+}
+
 
     /* TODOある日 */
 
