@@ -13,6 +13,7 @@
       background: #ffffff;
       color: white;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -21,10 +22,10 @@
     }
 
     .calendar {
-      width: px;
+      width: 260px;
       padding: 10px;
       background: #374151;
-      border-radius: px;
+      border-radius: 20px;
     }
 
     .header {
@@ -146,25 +147,7 @@
     const empty = document.createElement("div");
     datesContainer.appendChild(empty);
   }
-
-  // 日付生成
-  for (let i = 1; i <= lastDate; i++) {
-    const day = document.createElement("div");
-    day.classList.add("day");
-
-    if (i === today) {
-      day.innerHTML = `
-        <span class="date-number">${i}</span>
-        <span class="star">★</span>
-      `;
-    } else {
-      day.innerHTML = `<span class="date-number">${i}</span>`;
-    }
-
-    datesContainer.appendChild(day);
-  }
-
- 
+   
 function showTodos(date) {
   const todo = todos.find(t => t.date === date);
   const box = document.getElementById("todoList");
@@ -207,13 +190,6 @@ for (let i = 1; i <= lastDate; i++) {
 
   datesContainer.appendChild(day);
 }
-
-
-
-
-
-
-
 
 
 </script>
